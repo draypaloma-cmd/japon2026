@@ -3,410 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>🇯🇵 Japon 2026 — Budget</title>
+<title>Japon 2026 — Budget</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗾</text></svg>">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
-
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-
-:root {
-  --bg: #0d0d14;
-  --surface: #16161f;
-  --card: #1e1e2a;
-  --border: rgba(255,255,255,0.07);
-  --accent: #ff4d6d;
-  --gold: #ffd166;
-  --green: #06d6a0;
-  --blue: #4cc9f0;
-  --white: #f0f0f0;
-  --muted: rgba(240,240,240,0.45);
-  --red: #ef233c;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --bg:#0d0d14;--surface:#16161f;--card:#1e1e2a;--border:rgba(255,255,255,0.07);
+  --accent:#ff4d6d;--gold:#ffd166;--green:#06d6a0;--blue:#4cc9f0;
+  --white:#f0f0f0;--muted:rgba(240,240,240,0.45);--red:#ef233c;
 }
+body{background:var(--bg);color:var(--white);font-family:'Inter',sans-serif;min-height:100vh;padding-bottom:40px}
 
-body {
-  background: var(--bg);
-  color: var(--white);
-  font-family: 'Inter', 'Noto Sans JP', sans-serif;
-  min-height: 100vh;
-  padding-bottom: 40px;
-}
+.header{background:linear-gradient(135deg,#1a0a0f 0%,#0d0d14 60%);padding:32px 20px 24px;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
+.header::before{content:'日本';position:absolute;font-size:100px;color:rgba(255,77,109,0.05);top:-10px;right:-10px;font-weight:700;pointer-events:none}
+.header-tag{display:inline-block;background:var(--accent);color:white;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:10px;font-weight:600}
+.header h1{font-size:22px;font-weight:700;margin-bottom:4px}
+.header p{font-size:13px;color:var(--muted)}
 
-/* HEADER */
-.header {
-  background: linear-gradient(135deg, #1a0a0f 0%, #0d0d14 60%);
-  padding: 32px 20px 24px;
-  text-align: center;
-  border-bottom: 1px solid var(--border);
-  position: relative;
-  overflow: hidden;
-}
+.tabs{display:flex;background:var(--surface);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:1;min-width:80px;padding:14px 8px;text-align:center;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;white-space:nowrap}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
 
-.header::before {
-  content: '日本';
-  position: absolute;
-  font-family: 'Noto Sans JP', serif;
-  font-size: 100px;
-  color: rgba(255,77,109,0.05);
-  top: -10px; right: -10px;
-  font-weight: 700;
-  pointer-events: none;
-}
+.section{display:none;padding:20px 16px}
+.section.active{display:block}
 
-.header-tag {
-  display: inline-block;
-  background: var(--accent);
-  color: white;
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 4px 12px;
-  border-radius: 20px;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
+.section-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-weight:600}
 
-.header h1 {
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: -0.3px;
-  margin-bottom: 4px;
-}
+.budget-hero{background:linear-gradient(135deg,var(--accent) 0%,#8338ec 100%);border-radius:20px;padding:24px 20px;margin-bottom:16px;text-align:center}
+.budget-hero .bh-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:6px}
+.budget-hero .bh-amount{font-size:36px;font-weight:700;margin-bottom:4px}
+.budget-hero .bh-sub{font-size:12px;color:rgba(255,255,255,0.7)}
 
-.header p { font-size: 13px; color: var(--muted); }
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.stat-card{background:var(--card);border-radius:16px;padding:18px 16px;border:1px solid var(--border)}
+.stat-card .s-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.stat-card .s-value{font-size:22px;font-weight:700}
+.stat-card .s-sub{font-size:11px;color:var(--muted);margin-top:3px}
 
-/* TABS */
-.tabs {
-  display: flex;
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.tabs::-webkit-scrollbar { display: none; }
+.progress-card{background:var(--card);border-radius:16px;padding:18px 16px;margin-bottom:16px;border:1px solid var(--border)}
+.prog-header{display:flex;justify-content:space-between;margin-bottom:12px;font-size:13px;font-weight:500}
+.prog-pct{color:var(--gold);font-weight:700}
+.prog-bar-bg{background:rgba(255,255,255,0.08);border-radius:99px;height:12px;overflow:hidden;margin-bottom:10px}
+.prog-bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--gold));transition:width 0.6s ease}
+.prog-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}
 
-.tab {
-  flex: 1;
-  min-width: 80px;
-  padding: 14px 8px;
-  text-align: center;
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--muted);
-  cursor: pointer;
-  border-bottom: 2px solid transparent;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
+.card{background:var(--card);border-radius:16px;padding:18px 16px;margin-bottom:16px;border:1px solid var(--border)}
 
-.tab.active {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
-}
+.amounts-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:0}
+.amount-box{background:rgba(255,255,255,0.04);border-radius:12px;padding:12px 8px;text-align:center;border:1px solid var(--border)}
+.amount-box .ab-flag{font-size:18px;margin-bottom:4px}
+.amount-box .ab-val{font-size:14px;font-weight:700;color:var(--gold)}
+.amount-box .ab-unit{font-size:9px;color:var(--muted);text-transform:uppercase}
 
-/* SECTIONS */
-.section { display: none; padding: 20px 16px; }
-.section.active { display: block; }
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.form-row.full{grid-template-columns:1fr}
+.field-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
 
-/* CURRENCY CONVERTER */
-.converter-card {
-  background: var(--card);
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 16px;
-  border: 1px solid var(--border);
-}
+input,select{background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:10px;padding:11px 13px;color:var(--white);font-size:14px;font-family:'Inter',sans-serif;width:100%;outline:none;transition:border-color 0.2s}
+input:focus,select:focus{border-color:var(--accent)}
+input::placeholder{color:var(--muted)}
+select option{background:#1a1a2e}
 
-.converter-title {
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 16px;
-  font-weight: 600;
-}
+.btn-primary{background:var(--accent);color:white;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:600;width:100%;cursor:pointer;font-family:'Inter',sans-serif;transition:opacity 0.15s}
+.btn-primary:active{opacity:0.8}
+.btn-secondary{background:transparent;color:var(--gold);border:1px solid var(--gold);border-radius:12px;padding:12px;font-size:14px;font-weight:600;width:100%;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-green{background:var(--green);color:#000;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:600;width:100%;cursor:pointer;font-family:'Inter',sans-serif}
 
-.currency-input-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
-}
+.tx-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)}
+.tx-item:last-child{border-bottom:none}
+.tx-name{font-size:13px;font-weight:500;margin-bottom:3px}
+.tx-date{font-size:11px;color:var(--muted)}
+.tx-pos{font-size:15px;font-weight:700;color:var(--green)}
+.tx-neg{font-size:15px;font-weight:700;color:var(--accent)}
 
-.currency-flag-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-width: 70px;
-  font-size: 13px;
-  font-weight: 500;
-}
+.exp-item{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--border)}
+.exp-item:last-child{border-bottom:none}
+.exp-left{display:flex;align-items:center;gap:12px}
+.exp-emoji{font-size:20px;width:36px;text-align:center;flex-shrink:0}
+.exp-name{font-size:14px;font-weight:500;margin-bottom:3px;line-height:1.3}
+.exp-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.exp-date{font-size:11px;color:var(--muted)}
+.exp-eur{font-size:11px;background:rgba(255,209,102,0.12);color:var(--gold);padding:2px 8px;border-radius:6px}
+.exp-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.exp-amount{font-size:15px;font-weight:700;color:var(--accent)}
+.del-btn{background:rgba(239,35,60,0.1);border:none;color:var(--red);font-size:14px;cursor:pointer;padding:6px 10px;border-radius:8px}
 
-.currency-flag-label .flag { font-size: 20px; }
+.total-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0 4px;border-top:1px solid var(--border);margin-top:4px}
+.total-row .tr-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.total-row .tr-val{font-size:18px;font-weight:700;color:var(--gold)}
 
-.converter-input {
-  flex: 1;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 11px 14px;
-  color: var(--white);
-  font-size: 16px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  outline: none;
-  transition: border-color 0.2s;
-  width: 100%;
-}
+.empty-state{text-align:center;padding:24px 20px;color:var(--muted)}
+.empty-state .es-icon{font-size:36px;margin-bottom:10px}
+.empty-state p{font-size:13px;line-height:1.6}
 
-.converter-input:focus { border-color: var(--accent); }
-
-.divider-arrow {
-  text-align: center;
-  color: var(--muted);
-  font-size: 18px;
-  margin: 4px 0;
-}
-
-.result-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-top: 8px;
-}
-
-.result-box {
-  background: rgba(255,255,255,0.04);
-  border-radius: 12px;
-  padding: 12px 14px;
-  border: 1px solid var(--border);
-}
-
-.result-box .r-label { font-size: 10px; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px; }
-.result-box .r-value { font-size: 18px; font-weight: 700; color: var(--gold); }
-.result-box .r-unit { font-size: 10px; color: var(--muted); }
-
-/* BUDGET OVERVIEW */
-.budget-hero {
-  background: linear-gradient(135deg, var(--accent) 0%, #8338ec 100%);
-  border-radius: 20px;
-  padding: 24px 20px;
-  margin-bottom: 16px;
-  text-align: center;
-}
-
-.budget-hero .bh-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 6px; }
-.budget-hero .bh-amount { font-size: 36px; font-weight: 700; margin-bottom: 4px; }
-.budget-hero .bh-sub { font-size: 12px; color: rgba(255,255,255,0.7); }
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 16px;
-}
-
-.stat-card {
-  background: var(--card);
-  border-radius: 16px;
-  padding: 18px 16px;
-  border: 1px solid var(--border);
-}
-
-.stat-card .s-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-.stat-card .s-value { font-size: 22px; font-weight: 700; }
-.stat-card .s-sub { font-size: 11px; color: var(--muted); margin-top: 3px; }
-
-.progress-card {
-  background: var(--card);
-  border-radius: 16px;
-  padding: 18px 16px;
-  margin-bottom: 16px;
-  border: 1px solid var(--border);
-}
-
-.prog-header { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 13px; font-weight: 500; }
-.prog-pct { color: var(--gold); font-weight: 700; }
-
-.prog-bar-bg {
-  background: rgba(255,255,255,0.08);
-  border-radius: 99px;
-  height: 12px;
-  overflow: hidden;
-  margin-bottom: 10px;
-}
-
-.prog-bar-fill {
-  height: 100%;
-  border-radius: 99px;
-  background: linear-gradient(90deg, var(--accent), var(--gold));
-  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.prog-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); }
-
-/* MY BUDGET AMOUNTS */
-.amounts-card {
-  background: var(--card);
-  border-radius: 16px;
-  padding: 18px 16px;
-  margin-bottom: 16px;
-  border: 1px solid var(--border);
-}
-
-.amounts-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 8px;
-  margin-bottom: 14px;
-}
-
-.amount-box {
-  background: rgba(255,255,255,0.04);
-  border-radius: 12px;
-  padding: 12px 8px;
-  text-align: center;
-  border: 1px solid var(--border);
-}
-
-.amount-box .ab-flag { font-size: 18px; margin-bottom: 4px; }
-.amount-box .ab-val { font-size: 14px; font-weight: 700; color: var(--gold); }
-.amount-box .ab-unit { font-size: 9px; color: var(--muted); text-transform: uppercase; }
-
-.edit-amounts-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-
-.field-wrap { display: flex; flex-direction: column; gap: 5px; }
-.field-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
-
-input, select {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 11px 13px;
-  color: var(--white);
-  font-size: 14px;
-  font-family: 'Inter', sans-serif;
-  width: 100%;
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-input:focus, select:focus { border-color: var(--accent); }
-input::placeholder { color: var(--muted); }
-select option { background: #1a1a2e; }
-
-.btn-primary {
-  background: var(--accent);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  padding: 14px;
-  font-size: 15px;
-  font-weight: 600;
-  width: 100%;
-  cursor: pointer;
-  font-family: 'Inter', sans-serif;
-  transition: opacity 0.15s;
-}
-
-.btn-primary:active { opacity: 0.8; }
-
-.btn-secondary {
-  background: transparent;
-  color: var(--gold);
-  border: 1px solid var(--gold);
-  border-radius: 12px;
-  padding: 12px;
-  font-size: 14px;
-  font-weight: 600;
-  width: 100%;
-  cursor: pointer;
-  font-family: 'Inter', sans-serif;
-}
-
-/* EXPENSES */
-.add-form-card {
-  background: var(--card);
-  border-radius: 16px;
-  padding: 20px 16px;
-  margin-bottom: 16px;
-  border: 1px solid var(--border);
-}
-
-.form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
-.form-grid-1 { margin-bottom: 10px; }
-
-.expense-list-card {
-  background: var(--card);
-  border-radius: 16px;
-  padding: 20px 16px;
-  border: 1px solid var(--border);
-}
-
-.exp-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 13px 0;
-  border-bottom: 1px solid var(--border);
-}
-.exp-item:last-child { border-bottom: none; }
-
-.exp-left { display: flex; align-items: center; gap: 12px; }
-.exp-emoji { font-size: 20px; width: 36px; text-align: center; flex-shrink: 0; }
-.exp-name { font-size: 14px; font-weight: 500; margin-bottom: 3px; line-height: 1.3; }
-.exp-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-.exp-date { font-size: 11px; color: var(--muted); }
-.exp-eur { font-size: 11px; background: rgba(255,209,102,0.12); color: var(--gold); padding: 2px 8px; border-radius: 6px; }
-
-.exp-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-.exp-amount { font-size: 15px; font-weight: 700; color: var(--accent); }
-
-.del-btn {
-  background: rgba(239,35,60,0.1);
-  border: none;
-  color: var(--red);
-  font-size: 14px;
-  cursor: pointer;
-  padding: 6px 10px;
-  border-radius: 8px;
-  transition: background 0.2s;
-}
-.del-btn:active { background: rgba(239,35,60,0.25); }
-
-.empty-state {
-  text-align: center;
-  padding: 32px 20px;
-  color: var(--muted);
-}
-.empty-state .es-icon { font-size: 40px; margin-bottom: 12px; }
-.empty-state p { font-size: 14px; line-height: 1.6; }
-
-.section-label {
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 14px;
-  font-weight: 600;
-}
-
-.total-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 0 4px;
-  border-top: 1px solid var(--border);
-  margin-top: 4px;
-}
-.total-row .tr-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
-.total-row .tr-val { font-size: 18px; font-weight: 700; color: var(--gold); }
-
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.result-box{background:rgba(255,255,255,0.04);border-radius:12px;padding:12px 14px;border:1px solid var(--border)}
+.result-box .r-label{font-size:10px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:1px}
+.result-box .r-value{font-size:20px;font-weight:700;color:var(--gold)}
+.result-box .r-unit{font-size:10px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -418,13 +114,12 @@ select option { background: #1a1a2e; }
 </div>
 
 <div class="tabs">
-  <div class="tab active" onclick="showTab('overview')">📊 Budget</div>
-  <div class="tab" onclick="showTab('expenses')">💸 Dépenses</div>
-  <div class="tab" onclick="showTab('converter')">💱 Convertir</div>
-  
+  <div class="tab active" onclick="showTab('overview',this)">📊 Budget</div>
+  <div class="tab" onclick="showTab('expenses',this)">💸 Dépenses</div>
+  <div class="tab" onclick="showTab('converter',this)">💱 Convertir</div>
 </div>
 
-<!-- TAB: OVERVIEW -->
+<!-- BUDGET TAB -->
 <div class="section active" id="tab-overview">
 
   <div class="budget-hero">
@@ -436,60 +131,39 @@ select option { background: #1a1a2e; }
   <div class="stats-grid">
     <div class="stat-card">
       <div class="s-label">✅ Dépensé</div>
-      <div class="s-value" id="statSpent" style="color: var(--accent)">0 €</div>
-      <div class="s-sub" id="statSpentCount">0 dépenses</div>
+      <div class="s-value" id="statSpent" style="color:var(--accent)">0 €</div>
+      <div class="s-sub" id="statCount">0 dépenses</div>
     </div>
     <div class="stat-card">
       <div class="s-label">💚 Restant</div>
-      <div class="s-value" id="statLeft" style="color: var(--green)">—</div>
-      <div class="s-sub" id="statLeftPerDay">—/jour</div>
+      <div class="s-value" id="statLeft" style="color:var(--green)">—</div>
+      <div class="s-sub" id="statPerDay">—/jour</div>
     </div>
   </div>
 
   <div class="progress-card">
-    <div class="prog-header">
-      <span>Budget consommé</span>
-      <span class="prog-pct" id="progPct">0%</span>
-    </div>
-    <div class="prog-bar-bg">
-      <div class="prog-bar-fill" id="progFill" style="width:0%"></div>
-    </div>
-    <div class="prog-labels">
-      <span>0 €</span>
-      <span id="progMax">—</span>
-    </div>
+    <div class="prog-header"><span>Budget consommé</span><span class="prog-pct" id="progPct">0%</span></div>
+    <div class="prog-bar-bg"><div class="prog-bar-fill" id="progFill" style="width:0%"></div></div>
+    <div class="prog-labels"><span>0 €</span><span id="progMax">—</span></div>
   </div>
 
-  <div class="amounts-card">
+  <div class="card">
     <div class="section-label">Mon budget par devise</div>
     <div class="amounts-grid">
-      <div class="amount-box">
-        <div class="ab-flag">🇪🇺</div>
-        <div class="ab-val" id="dispEur">—</div>
-        <div class="ab-unit">EUR</div>
-      </div>
-      <div class="amount-box">
-        <div class="ab-flag">🇮🇱</div>
-        <div class="ab-val" id="dispIls">—</div>
-        <div class="ab-unit">ILS</div>
-      </div>
-      <div class="amount-box">
-        <div class="ab-flag">🇺🇸</div>
-        <div class="ab-val" id="dispUsd">—</div>
-        <div class="ab-unit">USD</div>
-      </div>
-      <div class="amount-box">
-        <div class="ab-flag">🇯🇵</div>
-        <div class="ab-val" id="dispJpy">—</div>
-        <div class="ab-unit">JPY</div>
-      </div>
+      <div class="amount-box"><div class="ab-flag">🇪🇺</div><div class="ab-val" id="dispEur">—</div><div class="ab-unit">EUR</div></div>
+      <div class="amount-box"><div class="ab-flag">🇮🇱</div><div class="ab-val" id="dispIls">—</div><div class="ab-unit">ILS</div></div>
+      <div class="amount-box"><div class="ab-flag">🇺🇸</div><div class="ab-val" id="dispUsd">—</div><div class="ab-unit">USD</div></div>
+      <div class="amount-box"><div class="ab-flag">🇯🇵</div><div class="ab-val" id="dispJpy">—</div><div class="ab-unit">JPY</div></div>
     </div>
   </div>
 
-  <div class="amounts-card">
+  <div class="card">
     <div class="section-label">✏️ Modifier mon budget</div>
-    <div class="form-grid-2" style="margin-bottom:10px;">
-      <div class="field-wrap">
+    <div class="form-row full" style="margin-bottom:10px">
+      <input type="text" id="budgetLabel" placeholder="Description ex: Virement Leumi Israel">
+    </div>
+    <div class="form-row" style="margin-bottom:10px">
+      <div>
         <div class="field-label">Devise</div>
         <select id="budgetCurrency">
           <option value="EUR">🇪🇺 EUR €</option>
@@ -498,40 +172,40 @@ select option { background: #1a1a2e; }
           <option value="JPY">🇯🇵 JPY ¥</option>
         </select>
       </div>
-      <div class="field-wrap">
+      <div>
         <div class="field-label">Montant</div>
         <input type="number" id="budgetAmount" placeholder="Ex: 500">
       </div>
     </div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-      <button class="btn-primary" onclick="adjustBudget(1)" style="background:var(--green);">➕ Ajouter</button>
-      <button class="btn-primary" onclick="adjustBudget(-1)" style="background:var(--accent);">➖ Enlever</button>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <button class="btn-green" onclick="adjustBudget(1)">➕ Ajouter</button>
+      <button class="btn-primary" onclick="adjustBudget(-1)">➖ Enlever</button>
     </div>
   </div>
 
-  <div class="amounts-card" style="margin-top:12px;">
+  <div class="card">
+    <div class="section-label">🕐 Dernières transactions</div>
+    <div id="transactionList">
+      <div class="empty-state"><div class="es-icon">📋</div><p>Aucune transaction pour l'instant</p></div>
+    </div>
+  </div>
+
+  <div class="card">
     <div class="section-label">🗑️ Réinitialiser</div>
-    <p style="font-size:13px; color:var(--muted); margin-bottom:14px;">Supprime toutes les dépenses et remet le budget à zéro.</p>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Supprime toutes les dépenses et remet le budget à zéro.</p>
     <button class="btn-secondary" onclick="resetAll()">🗑️ Tout réinitialiser</button>
   </div>
 
 </div>
 
-<!-- TAB: EXPENSES -->
+<!-- EXPENSES TAB -->
 <div class="section" id="tab-expenses">
-
-  <div class="add-form-card">
+  <div class="card">
     <div class="section-label">➕ Nouvelle dépense</div>
-    <div class="form-grid-1">
-      <input type="text" id="expName" placeholder="Ex: Hôtel Bespoke Shinjuku">
-    </div>
-    <div class="form-grid-2">
-      <div class="field-wrap">
-        <div class="field-label">Montant</div>
-        <input type="number" id="expAmount" placeholder="0">
-      </div>
-      <div class="field-wrap">
-        <div class="field-label">Devise</div>
+    <div class="form-row full"><input type="text" id="expName" placeholder="Ex: Hôtel Bespoke Shinjuku"></div>
+    <div class="form-row">
+      <div><div class="field-label">Montant</div><input type="number" id="expAmount" placeholder="0"></div>
+      <div><div class="field-label">Devise</div>
         <select id="expCurrency">
           <option value="EUR">🇪🇺 EUR €</option>
           <option value="ILS">🇮🇱 ILS ₪</option>
@@ -540,9 +214,8 @@ select option { background: #1a1a2e; }
         </select>
       </div>
     </div>
-    <div class="form-grid-2">
-      <div class="field-wrap">
-        <div class="field-label">Catégorie</div>
+    <div class="form-row">
+      <div><div class="field-label">Catégorie</div>
         <select id="expCategory">
           <option value="🏨">🏨 Hôtel</option>
           <option value="🎢">🎢 Parc / Activité</option>
@@ -553,15 +226,12 @@ select option { background: #1a1a2e; }
           <option value="💡">💡 Autre</option>
         </select>
       </div>
-      <div class="field-wrap">
-        <div class="field-label">Date</div>
-        <input type="date" id="expDate">
-      </div>
+      <div><div class="field-label">Date</div><input type="date" id="expDate"></div>
     </div>
     <button class="btn-primary" onclick="addExpense()">Ajouter ➜</button>
   </div>
 
-  <div class="expense-list-card">
+  <div class="card">
     <div class="section-label">🗓️ Toutes les dépenses</div>
     <div id="expenseList"></div>
     <div class="total-row">
@@ -569,167 +239,141 @@ select option { background: #1a1a2e; }
       <div class="tr-val" id="listTotal">0 €</div>
     </div>
   </div>
-
 </div>
 
-<!-- TAB: CONVERTER -->
+<!-- CONVERTER TAB -->
 <div class="section" id="tab-converter">
-
-  <div class="converter-card">
-    <div class="converter-title">💱 Convertisseur de devises</div>
-    <div class="currency-input-row">
-      <div class="currency-flag-label"><span class="flag">🌍</span></div>
-      <select id="convFromCurrency" onchange="convert()" style="min-width:100px; flex: 0 0 auto; width: auto;">
-        <option value="EUR">🇪🇺 EUR</option>
-        <option value="ILS">🇮🇱 ILS</option>
-        <option value="USD">🇺🇸 USD</option>
-        <option value="JPY">🇯🇵 JPY</option>
-      </select>
-      <input type="number" id="convAmount" placeholder="Montant" oninput="convert()" class="converter-input">
+  <div class="card">
+    <div class="section-label">💱 Convertisseur</div>
+    <div class="form-row">
+      <div><div class="field-label">Devise</div>
+        <select id="convFrom" onchange="convert()">
+          <option value="EUR">🇪🇺 EUR</option>
+          <option value="ILS">🇮🇱 ILS</option>
+          <option value="USD">🇺🇸 USD</option>
+          <option value="JPY">🇯🇵 JPY</option>
+        </select>
+      </div>
+      <div><div class="field-label">Montant</div><input type="number" id="convAmount" placeholder="0" oninput="convert()"></div>
     </div>
-    <div class="divider-arrow">↓ converti en</div>
     <div class="result-grid">
-      <div class="result-box">
-        <div class="r-label">🇪🇺 EUR</div>
-        <div class="r-value" id="res-EUR">—</div>
-        <div class="r-unit">Euros</div>
-      </div>
-      <div class="result-box">
-        <div class="r-label">🇮🇱 ILS</div>
-        <div class="r-value" id="res-ILS">—</div>
-        <div class="r-unit">Shekels</div>
-      </div>
-      <div class="result-box">
-        <div class="r-label">🇺🇸 USD</div>
-        <div class="r-value" id="res-USD">—</div>
-        <div class="r-unit">Dollars</div>
-      </div>
-      <div class="result-box">
-        <div class="r-label">🇯🇵 JPY</div>
-        <div class="r-value" id="res-JPY">—</div>
-        <div class="r-unit">Yens</div>
-      </div>
+      <div class="result-box"><div class="r-label">🇪🇺 EUR</div><div class="r-value" id="res-EUR">—</div><div class="r-unit">Euros</div></div>
+      <div class="result-box"><div class="r-label">🇮🇱 ILS</div><div class="r-value" id="res-ILS">—</div><div class="r-unit">Shekels</div></div>
+      <div class="result-box"><div class="r-label">🇺🇸 USD</div><div class="r-value" id="res-USD">—</div><div class="r-unit">Dollars</div></div>
+      <div class="result-box"><div class="r-label">🇯🇵 JPY</div><div class="r-value" id="res-JPY">—</div><div class="r-unit">Yens</div></div>
     </div>
   </div>
-
-  <div class="converter-card">
-    <div class="converter-title">📋 Taux de référence</div>
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-      <div class="result-box"><div class="r-label">1 EUR =</div><div class="r-value" style="font-size:15px;">3.97 ₪</div></div>
-      <div class="result-box"><div class="r-label">1 EUR =</div><div class="r-value" style="font-size:15px;">1.09 $</div></div>
-      <div class="result-box"><div class="r-label">1 EUR =</div><div class="r-value" style="font-size:15px;">163 ¥</div></div>
-      <div class="result-box"><div class="r-label">1 USD =</div><div class="r-value" style="font-size:15px;">3.64 ₪</div></div>
+  <div class="card">
+    <div class="section-label">📋 Taux de référence</div>
+    <div class="result-grid">
+      <div class="result-box"><div class="r-label">1 EUR =</div><div class="r-value" style="font-size:16px">3.97 ₪</div></div>
+      <div class="result-box"><div class="r-label">1 EUR =</div><div class="r-value" style="font-size:16px">1.09 $</div></div>
+      <div class="result-box"><div class="r-label">1 EUR =</div><div class="r-value" style="font-size:16px">163 ¥</div></div>
+      <div class="result-box"><div class="r-label">1 USD =</div><div class="r-value" style="font-size:16px">3.64 ₪</div></div>
     </div>
   </div>
-
 </div>
 
 <script>
-// ── RATES (to EUR) ──────────────────────────────────────
-const R = { EUR: 1, ILS: 0.252, USD: 0.917, JPY: 0.0061 };
+const R = { EUR:1, ILS:0.252, USD:0.917, JPY:0.0061 };
+const RATES = { EUR:1, ILS:3.97, USD:1.09, JPY:163 };
+const SYM = { EUR:'€', ILS:'₪', USD:'$', JPY:'¥' };
 
-// ── STATE ───────────────────────────────────────────────
-let budget = { EUR: 4501, ILS: 18113, USD: 0, JPY: 0 };
-
-const DEFAULT_EXPENSES = [
-  { name: "Asakusa Tobu Hello Kitty", amount: 1435, currency: "ILS", category: "🏨", date: "2026-08-17" },
-  { name: "Ghibli Park — billet 1", amount: 51, currency: "EUR", category: "🎫", date: "2026-08-10" },
-  { name: "Ghibli Park — billet 2", amount: 51, currency: "EUR", category: "🎫", date: "2026-08-10" },
-  { name: "Studios Harry Potter Tokyo", amount: 66, currency: "EUR", category: "🎫", date: "2026-08-23" },
-  { name: "DisneySea", amount: 113, currency: "EUR", category: "🎢", date: "2026-08-04" },
-  { name: "Ryokan Asakusa Shigetsu", amount: 530, currency: "ILS", category: "🏨", date: "2026-08-16" },
-  { name: "Vessel Inn Namba (Osaka)", amount: 68310, currency: "JPY", category: "🏨", date: "2026-08-12" },
-  { name: "Lakeland Hotel Fuji", amount: 61680, currency: "JPY", category: "🏨", date: "2026-08-07" },
-  { name: "Bespoke Hotel Shinjuku", amount: 689, currency: "EUR", category: "🏨", date: "2026-08-02" },
-];
-
+let budget = { EUR:4501, ILS:18113, USD:0, JPY:0 };
+let transactions = [];
 let expenses = [];
 
-// ── STORAGE ─────────────────────────────────────────────
+const DEFAULT_EXPENSES = [
+  { name:"Asakusa Tobu Hello Kitty", amount:1435, currency:"ILS", category:"🏨", date:"2026-08-17" },
+  { name:"Ghibli Park — billet 1", amount:51, currency:"EUR", category:"🎫", date:"2026-08-10" },
+  { name:"Ghibli Park — billet 2", amount:51, currency:"EUR", category:"🎫", date:"2026-08-10" },
+  { name:"Studios Harry Potter Tokyo", amount:66, currency:"EUR", category:"🎫", date:"2026-08-23" },
+  { name:"DisneySea", amount:113, currency:"EUR", category:"🎢", date:"2026-08-04" },
+  { name:"Ryokan Asakusa Shigetsu", amount:530, currency:"ILS", category:"🏨", date:"2026-08-16" },
+  { name:"Vessel Inn Namba", amount:68310, currency:"JPY", category:"🏨", date:"2026-08-12" },
+  { name:"Lakeland Hotel Fuji", amount:61680, currency:"JPY", category:"🏨", date:"2026-08-07" },
+  { name:"Bespoke Hotel Shinjuku", amount:689, currency:"EUR", category:"🏨", date:"2026-08-02" },
+];
+
 function load() {
   try {
     const b = localStorage.getItem('jp26_budget');
     const e = localStorage.getItem('jp26_expenses');
+    const t = localStorage.getItem('jp26_transactions');
     const inited = localStorage.getItem('jp26_inited');
     if (b) budget = JSON.parse(b);
     if (e) expenses = JSON.parse(e);
+    if (t) transactions = JSON.parse(t);
     if (!inited) {
       expenses = [...DEFAULT_EXPENSES];
       localStorage.setItem('jp26_inited', '1');
-      saveData();
+      save();
     }
-  } catch(err) {
-    expenses = [...DEFAULT_EXPENSES];
-  }
+  } catch(e) { expenses = [...DEFAULT_EXPENSES]; }
 }
 
-function saveData() {
+function save() {
   try {
     localStorage.setItem('jp26_budget', JSON.stringify(budget));
     localStorage.setItem('jp26_expenses', JSON.stringify(expenses));
+    localStorage.setItem('jp26_transactions', JSON.stringify(transactions));
   } catch(e) {}
 }
 
-// ── HELPERS ─────────────────────────────────────────────
-function toEur(amount, currency) {
-  return amount * (R[currency] || 1);
-}
+function toEur(amount, currency) { return amount * (R[currency] || 1); }
+function fmt(n, dec=0) { return isNaN(n) ? '—' : n.toLocaleString('fr-FR', {maximumFractionDigits:dec}); }
+function totalBudget() { return Object.entries(budget).reduce((s,[k,v]) => s + toEur(v,k), 0); }
+function totalSpent() { return expenses.reduce((s,e) => s + toEur(e.amount, e.currency), 0); }
 
-function fmt(n, dec = 0) {
-  if (isNaN(n)) return '—';
-  return n.toLocaleString('fr-FR', { maximumFractionDigits: dec });
-}
-
-function currSymbol(c) {
-  return { EUR: '€', ILS: '₪', USD: '$', JPY: '¥' }[c] || c;
-}
-
-function totalBudgetEur() {
-  return Object.entries(budget).reduce((s, [k, v]) => s + toEur(v, k), 0);
-}
-
-function totalSpentEur() {
-  return expenses.reduce((s, e) => s + toEur(e.amount, e.currency), 0);
-}
-
-// ── RENDER ───────────────────────────────────────────────
 function render() {
-  const total = totalBudgetEur();
-  const spent = totalSpentEur();
+  const total = totalBudget();
+  const spent = totalSpent();
   const left = total - spent;
-  const pct = total > 0 ? Math.min(100, (spent / total) * 100) : 0;
+  const pct = total > 0 ? Math.min(100, (spent/total)*100) : 0;
 
-  // Overview
   document.getElementById('heroTotal').textContent = fmt(total) + ' €';
   document.getElementById('statSpent').textContent = fmt(spent) + ' €';
-  document.getElementById('statSpentCount').textContent = expenses.length + ' dépense' + (expenses.length > 1 ? 's' : '');
+  document.getElementById('statCount').textContent = expenses.length + ' dépense' + (expenses.length > 1 ? 's' : '');
   document.getElementById('statLeft').textContent = fmt(left) + ' €';
   document.getElementById('statLeft').style.color = left < 0 ? 'var(--red)' : 'var(--green)';
-  document.getElementById('statLeftPerDay').textContent = left > 0 ? fmt(left / 24) + ' €/jour' : '—';
-  document.getElementById('progPct').textContent = fmt(pct, 1) + '%';
+  document.getElementById('statPerDay').textContent = left > 0 ? fmt(left/24) + ' €/jour' : '—';
+  document.getElementById('progPct').textContent = fmt(pct,1) + '%';
   document.getElementById('progFill').style.width = pct + '%';
   document.getElementById('progMax').textContent = fmt(total) + ' €';
-
-  // Amounts
   document.getElementById('dispEur').textContent = fmt(budget.EUR);
   document.getElementById('dispIls').textContent = fmt(budget.ILS);
   document.getElementById('dispUsd').textContent = fmt(budget.USD);
   document.getElementById('dispJpy').textContent = fmt(budget.JPY);
-
-  // Expenses list
-  renderExpenses(spent);
-}
-
-function renderExpenses(spent) {
-  const list = document.getElementById('expenseList');
   document.getElementById('listTotal').textContent = fmt(spent) + ' €';
 
-  if (expenses.length === 0) {
-    list.innerHTML = `<div class="empty-state"><div class="es-icon">🗂️</div><p>Aucune dépense pour l'instant.<br>Ajoute ta première ci-dessus !</p></div>`;
+  renderExpenses();
+  renderTransactions();
+}
+
+function renderTransactions() {
+  const list = document.getElementById('transactionList');
+  if (!transactions || transactions.length === 0) {
+    list.innerHTML = '<div class="empty-state"><div class="es-icon">📋</div><p>Aucune transaction pour l\'instant</p></div>';
     return;
   }
+  list.innerHTML = transactions.map(t => `
+    <div class="tx-item">
+      <div>
+        <div class="tx-name">${t.sign > 0 ? '➕' : '➖'} ${t.label}</div>
+        <div class="tx-date">${t.date}</div>
+      </div>
+      <div class="${t.sign > 0 ? 'tx-pos' : 'tx-neg'}">${t.sign > 0 ? '+' : '-'}${SYM[t.currency]}${fmt(t.amount)}</div>
+    </div>
+  `).join('');
+}
 
-  list.innerHTML = expenses.map((e, i) => `
+function renderExpenses() {
+  const list = document.getElementById('expenseList');
+  if (expenses.length === 0) {
+    list.innerHTML = '<div class="empty-state"><div class="es-icon">🗂️</div><p>Aucune dépense</p></div>';
+    return;
+  }
+  list.innerHTML = expenses.map((e,i) => `
     <div class="exp-item">
       <div class="exp-left">
         <div class="exp-emoji">${e.category}</div>
@@ -742,125 +386,75 @@ function renderExpenses(spent) {
         </div>
       </div>
       <div class="exp-right">
-        <div class="exp-amount">${currSymbol(e.currency)}${fmt(e.amount)}</div>
+        <div class="exp-amount">${SYM[e.currency]}${fmt(e.amount)}</div>
         <button class="del-btn" onclick="deleteExp(${i})">✕</button>
       </div>
     </div>
   `).join('');
 }
 
-// ── ACTIONS ──────────────────────────────────────────────
+function adjustBudget(sign) {
+  const currency = document.getElementById('budgetCurrency').value;
+  const amount = parseFloat(document.getElementById('budgetAmount').value);
+  const label = document.getElementById('budgetLabel').value.trim() || (sign > 0 ? 'Ajout budget' : 'Retrait budget');
+  if (isNaN(amount) || amount <= 0) { alert('Saisis un montant valide !'); return; }
+  budget[currency] = Math.max(0, (budget[currency] || 0) + sign * amount);
+  transactions.unshift({
+    label, amount, currency, sign,
+    date: new Date().toLocaleString('fr-FR', {day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})
+  });
+  if (transactions.length > 30) transactions.pop();
+  document.getElementById('budgetAmount').value = '';
+  document.getElementById('budgetLabel').value = '';
+  save();
+  render();
+}
+
 function addExpense() {
   const name = document.getElementById('expName').value.trim();
   const amount = parseFloat(document.getElementById('expAmount').value);
   const currency = document.getElementById('expCurrency').value;
   const category = document.getElementById('expCategory').value;
   const date = document.getElementById('expDate').value;
-
-  if (!name || isNaN(amount) || amount <= 0) {
-    alert('Remplis le nom et le montant !');
-    return;
-  }
-
+  if (!name || isNaN(amount) || amount <= 0) { alert('Remplis le nom et le montant !'); return; }
   expenses.unshift({ name, amount, currency, category, date });
-  saveData();
+  save();
   render();
-
   document.getElementById('expName').value = '';
   document.getElementById('expAmount').value = '';
   document.getElementById('expDate').value = '';
 }
 
 function deleteExp(i) {
-  if (confirm('Supprimer cette dépense ?')) {
-    expenses.splice(i, 1);
-    saveData();
-    render();
-  }
-}
-
-function adjustBudget(sign) {
-  const currency = document.getElementById('budgetCurrency').value;
-  const amount = parseFloat(document.getElementById('budgetAmount').value);
-  if (isNaN(amount) || amount <= 0) {
-    alert('Saisis un montant valide !');
-    return;
-  }
-  budget[currency] = Math.max(0, (budget[currency] || 0) + sign * amount);
-  document.getElementById('budgetAmount').value = '';
-  saveData();
-  render();
-}
-
-function addToBudget() {
-  const fields = ['eur','ils','usd','jpy'];
-  let added = false;
-  fields.forEach(f => {
-    const v = parseFloat(document.getElementById('add-' + f).value);
-    if (!isNaN(v) && v > 0) {
-      budget[f.toUpperCase()] += v;
-      document.getElementById('add-' + f).value = '';
-      added = true;
-    }
-  });
-  if (added) {
-    saveData();
-    render();
-    alert('Budget mis à jour ✅');
-  } else {
-    alert('Saisis au moins un montant à ajouter !');
-  }
-}
-
-function saveBudget() {
-  const fields = ['eur','ils','usd','jpy'];
-  fields.forEach(f => {
-    const v = parseFloat(document.getElementById('set-' + f).value);
-    if (!isNaN(v)) budget[f.toUpperCase()] = v;
-    document.getElementById('set-' + f).value = '';
-  });
-  saveData();
-  render();
-  alert('Budget sauvegardé ✅');
+  if (confirm('Supprimer cette dépense ?')) { expenses.splice(i,1); save(); render(); }
 }
 
 function resetAll() {
   if (confirm('Vraiment tout réinitialiser ?')) {
-    expenses = [];
-    budget = { EUR: 4501, ILS: 18113, USD: 0, JPY: 0 };
+    expenses = []; transactions = [];
+    budget = { EUR:4501, ILS:18113, USD:0, JPY:0 };
     localStorage.removeItem('jp26_inited');
-    saveData();
-    render();
+    save(); render();
   }
 }
 
-// ── CONVERTER ────────────────────────────────────────────
-// EUR base rates
-const RATES_FROM_EUR = { EUR: 1, ILS: 3.97, USD: 1.09, JPY: 163 };
-
 function convert() {
-  const from = document.getElementById('convFromCurrency').value;
+  const from = document.getElementById('convFrom').value;
   const amount = parseFloat(document.getElementById('convAmount').value);
-  if (isNaN(amount) || amount === 0) {
-    ['EUR','ILS','USD','JPY'].forEach(c => document.getElementById('res-' + c).textContent = '—');
-    return;
-  }
-  const inEur = amount / RATES_FROM_EUR[from];
+  if (isNaN(amount)) { ['EUR','ILS','USD','JPY'].forEach(c => document.getElementById('res-'+c).textContent = '—'); return; }
+  const inEur = amount / RATES[from];
   ['EUR','ILS','USD','JPY'].forEach(c => {
-    const result = inEur * RATES_FROM_EUR[c];
-    document.getElementById('res-' + c).textContent = fmt(result, c === 'JPY' ? 0 : 2);
+    document.getElementById('res-'+c).textContent = fmt(inEur * RATES[c], c==='JPY' ? 0 : 2);
   });
 }
 
-// ── TABS ─────────────────────────────────────────────────
-function showTab(id) {
+function showTab(id, el) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('tab-' + id).classList.add('active');
-  event.target.classList.add('active');
+  document.getElementById('tab-'+id).classList.add('active');
+  el.classList.add('active');
 }
 
-// ── INIT ─────────────────────────────────────────────────
 load();
 render();
 </script>
