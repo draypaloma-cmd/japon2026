@@ -192,8 +192,18 @@ select option{background:#1a1a2e}
 
   <div class="card">
     <div class="section-label">🗑️ Réinitialiser</div>
-    <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Supprime toutes les dépenses et remet le budget à zéro.</p>
-    <button class="btn-secondary" onclick="resetAll()">🗑️ Tout réinitialiser</button>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+      <div>
+        <p style="font-size:11px;color:var(--muted);margin-bottom:10px">Remet EUR/ILS/USD/JPY à 0. Garde les transactions.</p>
+        <button class="btn-secondary" onclick="resetBudget()">💰 Reset budget</button>
+      </div>
+      <div>
+        <p style="font-size:11px;color:var(--muted);margin-bottom:10px">Supprime l'historique des transactions uniquement.</p>
+        <button class="btn-secondary" onclick="resetTransactions()">🕐 Reset transactions</button>
+      </div>
+    </div>
+    <p style="font-size:11px;color:var(--muted);margin-bottom:10px;margin-top:6px">Supprime tout — dépenses, transactions et budget.</p>
+    <button class="btn-secondary" style="border-color:var(--red);color:var(--red)" onclick="resetAll()">🗑️ Tout réinitialiser</button>
   </div>
 
 </div>
@@ -429,10 +439,24 @@ function deleteExp(i) {
   if (confirm('Supprimer cette dépense ?')) { expenses.splice(i,1); save(); render(); }
 }
 
+function resetBudget() {
+  if (confirm('Remettre le budget à 0 ? Les transactions sont conservées.')) {
+    budget = { EUR:0, ILS:0, USD:0, JPY:0 };
+    save(); render();
+  }
+}
+
+function resetTransactions() {
+  if (confirm('Supprimer l'historique des transactions ?')) {
+    transactions = [];
+    save(); render();
+  }
+}
+
 function resetAll() {
-  if (confirm('Vraiment tout réinitialiser ?')) {
+  if (confirm('⚠️ Supprimer TOUT ? Budget, dépenses et transactions.')) {
     expenses = []; transactions = [];
-    budget = { EUR:4501, ILS:18113, USD:0, JPY:0 };
+    budget = { EUR:0, ILS:0, USD:0, JPY:0 };
     localStorage.removeItem('jp26_inited');
     save(); render();
   }
