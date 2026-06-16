@@ -180,7 +180,7 @@ select option{background:#1a1a2e}
       </div>
       <div>
         <div class="field-label">Amount</div>
-        <input type="number" id="budgetAmount" placeholder="e.g: 500">
+        <input type="number" inputmode="numeric" id="budgetAmount" placeholder="e.g: 500">
       </div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
@@ -207,7 +207,7 @@ select option{background:#1a1a2e}
     <div class="section-label">➕ Nouvelle expense</div>
     <div class="form-row full"><input type="text" id="expName" placeholder="e.g: Bespoke Hotel Shinjuku"></div>
     <div class="form-row">
-      <div><div class="field-label">Amount</div><input type="number" id="expAmount" placeholder="0"></div>
+      <div><div class="field-label">Amount</div><input type="number" inputmode="numeric" id="expAmount" placeholder="0"></div>
       <div><div class="field-label">Currency</div>
         <select id="expCurrency">
           <option value="EUR">🇪🇺 EUR €</option>
@@ -257,7 +257,7 @@ select option{background:#1a1a2e}
           <option value="JPY">🇯🇵 JPY</option>
         </select>
       </div>
-      <div><div class="field-label">Amount</div><input type="number" id="convAmount" placeholder="0" oninput="convert()"></div>
+      <div><div class="field-label">Amount</div><input type="number" inputmode="numeric" id="convAmount" placeholder="0" oninput="convert()"></div>
     </div>
     <div class="result-grid">
       <div class="result-box"><div class="r-label">🇪🇺 EUR</div><div class="r-value" id="res-EUR">—</div><div class="r-unit">Euros</div></div>
@@ -296,6 +296,7 @@ const DEFAULT_EXPENSES = [
   { name:"Vessel Inn Namba", amount:68310, currency:"JPY", category:"🏨", date:"2026-08-12" },
   { name:"Lakeland Hotel Fuji", amount:61680, currency:"JPY", category:"🏨", date:"2026-08-07" },
   { name:"Bespoke Hotel Shinjuku", amount:689, currency:"EUR", category:"🏨", date:"2026-08-02" },
+  { name:"Universal Studios Japan (1 adult + 1 child)", amount:124.04, currency:"USD", category:"🎢", date:"2026-08-14" },
 ];
 
 function load() {
@@ -502,7 +503,7 @@ render();
     <input type="hidden" id="editIndex">
     <div class="form-row full" style="margin-bottom:10px"><input type="text" id="editName" placeholder="Name"></div>
     <div class="form-row" style="margin-bottom:10px">
-      <div><div class="field-label">Amount</div><input type="number" id="editAmount" placeholder="0"></div>
+      <div><div class="field-label">Amount</div><input type="number" inputmode="numeric" id="editAmount" placeholder="0"></div>
       <div><div class="field-label">Currency</div>
         <select id="editCurrency">
           <option value="EUR">🇪🇺 EUR €</option>
