@@ -1,122 +1,131 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Japon 2026 — Budget</title>
+<title>Japan 2026 — Budget</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗾</text></svg>">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{
-  --bg:#0d0d14;--surface:#16161f;--card:#1e1e2a;--border:rgba(255,255,255,0.07);
-  --accent:#ff4d6d;--gold:#ffd166;--green:#06d6a0;--blue:#4cc9f0;
-  --white:#f0f0f0;--muted:rgba(240,240,240,0.45);--red:#ef233c;
+  --bg:#0d0d14;
+  --surface:#16161f;
+  --card:#1e1e2a;
+  --border:rgba(255,255,255,0.07);
+  --accent:#ff4d6d;
+  --gold:#ffd166;
+  --green:#06d6a0;
+  --blue:#4cc9f0;
+  --red:#ef233c;
+  --text:#f0f0f0;
+  --muted:rgba(240,240,240,0.45);
+  --shadow:0 2px 12px rgba(0,0,0,0.3);
 }
-body{background:var(--bg);color:var(--white);font-family:'Inter',sans-serif;min-height:100vh;padding-bottom:40px}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;padding-bottom:40px}
 
-.header{background:linear-gradient(135deg,#1a0a0f 0%,#0d0d14 60%);padding:32px 20px 24px;text-align:center;border-bottom:1px solid var(--border);position:relative;overflow:hidden}
-.header::before{content:'日本';position:absolute;font-size:100px;color:rgba(255,77,109,0.05);top:-10px;right:-10px;font-weight:700;pointer-events:none}
-.header-tag{display:inline-block;background:var(--accent);color:white;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:10px;font-weight:600}
-.header h1{font-size:22px;font-weight:700;margin-bottom:4px}
-.header p{font-size:13px;color:var(--muted)}
+.header{background:linear-gradient(135deg,#ff3b5c,#8338ec);padding:32px 20px 28px;text-align:center}
+.header-tag{display:inline-block;background:rgba(255,255,255,0.2);color:white;font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:10px;font-weight:600}
+.header h1{font-size:24px;font-weight:700;color:white;margin-bottom:4px}
+.header p{font-size:13px;color:rgba(255,255,255,0.75)}
 
-.tabs{display:flex;background:var(--surface);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none}
+.tabs{display:flex;background:var(--surface);border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;box-shadow:var(--shadow)}
 .tabs::-webkit-scrollbar{display:none}
 .tab{flex:1;min-width:80px;padding:14px 8px;text-align:center;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;white-space:nowrap}
 .tab.active{color:var(--accent);border-bottom-color:var(--accent)}
 
-.section{display:none;padding:20px 16px}
+.section{display:none;padding:16px}
 .section.active{display:block}
 
-.section-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:14px;font-weight:600}
+.section-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;font-weight:600}
 
-.budget-hero{background:linear-gradient(135deg,var(--accent) 0%,#8338ec 100%);border-radius:20px;padding:24px 20px;margin-bottom:16px;text-align:center}
-.budget-hero .bh-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:6px}
-.budget-hero .bh-amount{font-size:36px;font-weight:700;margin-bottom:4px}
-.budget-hero .bh-sub{font-size:12px;color:rgba(255,255,255,0.7)}
+.budget-hero{background:linear-gradient(135deg,var(--accent),#8338ec);border-radius:20px;padding:24px 20px;margin-bottom:14px;text-align:center;box-shadow:0 4px 20px rgba(255,59,92,0.3)}
+.bh-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:6px}
+.bh-amount{font-size:38px;font-weight:700;color:white;margin-bottom:4px}
+.bh-sub{font-size:12px;color:rgba(255,255,255,0.7)}
 
-.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
-.stat-card{background:var(--card);border-radius:16px;padding:18px 16px;border:1px solid var(--border)}
-.stat-card .s-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
-.stat-card .s-value{font-size:22px;font-weight:700}
-.stat-card .s-sub{font-size:11px;color:var(--muted);margin-top:3px}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.stat-card{background:var(--card);border-radius:16px;padding:16px;border:1px solid var(--border);box-shadow:var(--shadow)}
+.s-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.s-value{font-size:22px;font-weight:700}
+.s-sub{font-size:11px;color:var(--muted);margin-top:3px}
 
-.progress-card{background:var(--card);border-radius:16px;padding:18px 16px;margin-bottom:16px;border:1px solid var(--border)}
-.prog-header{display:flex;justify-content:space-between;margin-bottom:12px;font-size:13px;font-weight:500}
-.prog-pct{color:var(--gold);font-weight:700}
-.prog-bar-bg{background:rgba(255,255,255,0.08);border-radius:99px;height:12px;overflow:hidden;margin-bottom:10px}
+.progress-card{background:var(--card);border-radius:16px;padding:16px;margin-bottom:14px;border:1px solid var(--border);box-shadow:var(--shadow)}
+.prog-header{display:flex;justify-content:space-between;margin-bottom:10px;font-size:13px;font-weight:500}
+.prog-pct{color:var(--accent);font-weight:700}
+.prog-bar-bg{background:rgba(255,255,255,0.08);border-radius:99px;height:10px;overflow:hidden;margin-bottom:8px}
 .prog-bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--gold));transition:width 0.6s ease}
 .prog-labels{display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}
 
-.card{background:var(--card);border-radius:16px;padding:18px 16px;margin-bottom:16px;border:1px solid var(--border)}
+.card{background:var(--card);border-radius:16px;padding:16px;margin-bottom:14px;border:1px solid var(--border);box-shadow:var(--shadow)}
 
-.amounts-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:0}
+.amounts-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px}
 .amount-box{background:rgba(255,255,255,0.04);border-radius:12px;padding:12px 8px;text-align:center;border:1px solid var(--border)}
-.amount-box .ab-flag{font-size:18px;margin-bottom:4px}
-.amount-box .ab-val{font-size:14px;font-weight:700;color:var(--gold)}
-.amount-box .ab-unit{font-size:9px;color:var(--muted);text-transform:uppercase}
+.ab-flag{font-size:18px;margin-bottom:4px}
+.ab-val{font-size:14px;font-weight:700;color:var(--accent)}
+.ab-unit{font-size:9px;color:var(--muted);text-transform:uppercase}
 
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
 .form-row.full{grid-template-columns:1fr}
-.field-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
+.field-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:5px;font-weight:500}
 
-input,select{background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:10px;padding:11px 13px;color:var(--white);font-size:14px;font-family:'Inter',sans-serif;width:100%;outline:none;transition:border-color 0.2s}
-input:focus,select:focus{border-color:var(--accent)}
-input::placeholder{color:var(--muted)}
+input,select{background:rgba(255,255,255,0.06);border:1.5px solid var(--border);border-radius:10px;padding:11px 13px;color:var(--text);font-size:14px;font-family:'Inter',sans-serif;width:100%;outline:none;transition:border-color 0.2s}
+input:focus,select:focus{border-color:var(--accent);background:rgba(255,255,255,0.1)}
+input::placeholder{color:#9ca3af}
 select option{background:#1a1a2e}
 
-.btn-primary{background:var(--accent);color:white;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:600;width:100%;cursor:pointer;font-family:'Inter',sans-serif;transition:opacity 0.15s}
-.btn-primary:active{opacity:0.8}
-.btn-secondary{background:transparent;color:var(--gold);border:1px solid var(--gold);border-radius:12px;padding:12px;font-size:14px;font-weight:600;width:100%;cursor:pointer;font-family:'Inter',sans-serif}
-.btn-green{background:var(--green);color:#000;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:600;width:100%;cursor:pointer;font-family:'Inter',sans-serif}
+.btn-primary{background:var(--accent);color:white;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:600;width:100%;cursor:pointer;font-family:'Inter',sans-serif;box-shadow:0 2px 8px rgba(255,59,92,0.3)}
+.btn-green{background:var(--green);color:white;border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:600;width:100%;cursor:pointer;font-family:'Inter',sans-serif;box-shadow:0 2px 8px rgba(16,185,129,0.3)}
+.btn-secondary{background:transparent;color:var(--accent);border:1.5px solid var(--accent);border-radius:12px;padding:12px;font-size:14px;font-weight:600;width:100%;cursor:pointer;font-family:'Inter',sans-serif}
 
-.tx-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)}
+.tx-item{display:flex;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)}
 .tx-item:last-child{border-bottom:none}
-.tx-name{font-size:13px;font-weight:500;margin-bottom:3px}
+.tx-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px}
 .tx-date{font-size:11px;color:var(--muted)}
 .tx-pos{font-size:15px;font-weight:700;color:var(--green)}
 .tx-neg{font-size:15px;font-weight:700;color:var(--accent)}
 
-.exp-item{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--border)}
+.exp-item{display:flex;align-items:center;padding:13px 0;border-bottom:1px solid var(--border)}
 .exp-item:last-child{border-bottom:none}
-.exp-left{display:flex;align-items:center;gap:12px}
 .exp-emoji{font-size:20px;width:36px;text-align:center;flex-shrink:0}
-.exp-name{font-size:14px;font-weight:500;margin-bottom:3px;line-height:1.3}
+.exp-name{font-size:14px;font-weight:500;color:var(--text);margin-bottom:3px;line-height:1.3}
 .exp-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .exp-date{font-size:11px;color:var(--muted)}
-.exp-eur{font-size:11px;background:rgba(255,209,102,0.12);color:var(--gold);padding:2px 8px;border-radius:6px}
-.exp-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.exp-eur{font-size:11px;background:rgba(255,209,102,0.12);color:var(--gold);padding:2px 8px;border-radius:6px;font-weight:500}
 .exp-amount{font-size:15px;font-weight:700;color:var(--accent)}
-.del-btn{background:rgba(239,35,60,0.1);border:none;color:var(--red);font-size:14px;cursor:pointer;padding:6px 10px;border-radius:8px}
+
+.icon-btn{background:none;border:none;font-size:16px;cursor:pointer;padding:6px 8px;border-radius:8px;transition:background 0.15s}
+.icon-btn:hover{background:rgba(255,255,255,0.08)}
+.icon-btn-blue{color:var(--blue)}
+.icon-btn-red{color:var(--red)}
 
 .total-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0 4px;border-top:1px solid var(--border);margin-top:4px}
-.total-row .tr-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
-.total-row .tr-val{font-size:18px;font-weight:700;color:var(--gold)}
+.tr-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-weight:500}
+.tr-val{font-size:18px;font-weight:700;color:var(--accent)}
 
 .empty-state{text-align:center;padding:24px 20px;color:var(--muted)}
 .empty-state .es-icon{font-size:36px;margin-bottom:10px}
 .empty-state p{font-size:13px;line-height:1.6}
 
-.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:100;justify-content:center;align-items:flex-end}
-.modal-overlay.open{display:flex}
-.modal{background:var(--card);border-radius:20px 20px 0 0;padding:24px 20px 40px;width:100%;border-top:1px solid var(--border)}
-.modal-title{font-size:16px;font-weight:700;margin-bottom:20px;text-align:center}
-.modal-close{float:right;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;margin-top:-4px}
-
 .result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
 .result-box{background:rgba(255,255,255,0.04);border-radius:12px;padding:12px 14px;border:1px solid var(--border)}
-.result-box .r-label{font-size:10px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:1px}
-.result-box .r-value{font-size:20px;font-weight:700;color:var(--gold)}
-.result-box .r-unit{font-size:10px;color:var(--muted)}
+.r-label{font-size:10px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:1px;font-weight:500}
+.r-value{font-size:20px;font-weight:700;color:var(--text)}
+.r-unit{font-size:10px;color:var(--muted)}
+
+.modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:100;justify-content:center;align-items:flex-end}
+.modal-overlay.open{display:flex}
+.modal{background:var(--card);border-radius:24px 24px 0 0;padding:24px 20px 40px;width:100%;border-top:1px solid var(--border);box-shadow:0 -4px 30px rgba(0,0,0,0.15)}
+.modal-title{font-size:16px;font-weight:700;margin-bottom:20px;text-align:center;color:var(--text)}
+.modal-close{float:right;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;margin-top:-4px}
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="header-tag">🇯🇵 Août 2026</div>
-  <h1>Japon 2026 — Budget</h1>
-  <p>24 days</p>
+  <div class="header-tag">🇯🇵 August 2026</div>
+  <h1>Japan 2026 — Budget</h1>
+  <p>Paloma & Ava Bat-Mitzvah's trip!! 🎉</p>
 </div>
 
 <div class="tabs">
@@ -129,9 +138,9 @@ select option{background:#1a1a2e}
 <div class="section active" id="tab-overview">
 
   <div class="budget-hero">
-    <div class="bh-label">Estimated total budget</div>
-    <div class="bh-amount" id="heroTotal">—</div>
-    <div class="bh-sub">EUR + ILS + USD converted to €</div>
+    <div class="bh-label">Total budget</div>
+    <div class="bh-amount" id="heroTotal">0 €</div>
+    <div class="bh-sub">EUR + ILS + USD + JPY converted to €</div>
   </div>
 
   <div class="stats-grid">
@@ -142,7 +151,7 @@ select option{background:#1a1a2e}
     </div>
     <div class="stat-card">
       <div class="s-label">💚 Remaining</div>
-      <div class="s-value" id="statLeft" style="color:var(--green)">—</div>
+      <div class="s-value" id="statLeft" style="color:var(--green)">0 €</div>
       <div class="s-sub" id="statPerDay">—/day</div>
     </div>
   </div>
@@ -150,23 +159,23 @@ select option{background:#1a1a2e}
   <div class="progress-card">
     <div class="prog-header"><span>Budget used</span><span class="prog-pct" id="progPct">0%</span></div>
     <div class="prog-bar-bg"><div class="prog-bar-fill" id="progFill" style="width:0%"></div></div>
-    <div class="prog-labels"><span>0 €</span><span id="progMax">—</span></div>
+    <div class="prog-labels"><span>0 €</span><span id="progMax">0 €</span></div>
   </div>
 
   <div class="card">
     <div class="section-label">My budget by currency</div>
     <div class="amounts-grid">
-      <div class="amount-box"><div class="ab-flag">🇪🇺</div><div class="ab-val" id="dispEur">—</div><div class="ab-unit">EUR</div></div>
-      <div class="amount-box"><div class="ab-flag">🇮🇱</div><div class="ab-val" id="dispIls">—</div><div class="ab-unit">ILS</div></div>
-      <div class="amount-box"><div class="ab-flag">🇺🇸</div><div class="ab-val" id="dispUsd">—</div><div class="ab-unit">USD</div></div>
-      <div class="amount-box"><div class="ab-flag">🇯🇵</div><div class="ab-val" id="dispJpy">—</div><div class="ab-unit">JPY</div></div>
+      <div class="amount-box"><div class="ab-flag">🇪🇺</div><div class="ab-val" id="dispEur">0</div><div class="ab-unit">EUR</div></div>
+      <div class="amount-box"><div class="ab-flag">🇮🇱</div><div class="ab-val" id="dispIls">0</div><div class="ab-unit">ILS</div></div>
+      <div class="amount-box"><div class="ab-flag">🇺🇸</div><div class="ab-val" id="dispUsd">0</div><div class="ab-unit">USD</div></div>
+      <div class="amount-box"><div class="ab-flag">🇯🇵</div><div class="ab-val" id="dispJpy">0</div><div class="ab-unit">JPY</div></div>
     </div>
   </div>
 
   <div class="card">
     <div class="section-label">✏️ Edit my budget</div>
     <div class="form-row full" style="margin-bottom:10px">
-      <input type="text" id="budgetLabel" placeholder="Description e.g: Transfer from Leumi Israel">
+      <input type="text" id="budgetLabel" placeholder="e.g: Transfer from Leumi Israel">
     </div>
     <div class="form-row" style="margin-bottom:10px">
       <div>
@@ -196,15 +205,23 @@ select option{background:#1a1a2e}
     </div>
   </div>
 
-  
-  </div>
-
 </div>
 
 <!-- EXPENSES TAB -->
 <div class="section" id="tab-expenses">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+    <div style="background:var(--card);border-radius:14px;padding:14px 16px;border:1px solid var(--border);box-shadow:var(--shadow)">
+      <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;font-weight:500">💸 Total spent</div>
+      <div id="expTabSpent" style="font-size:20px;font-weight:700;color:var(--accent)">0 €</div>
+    </div>
+    <div style="background:var(--card);border-radius:14px;padding:14px 16px;border:1px solid var(--border);box-shadow:var(--shadow)">
+      <div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;font-weight:500">💚 Remaining</div>
+      <div id="expTabLeft" style="font-size:20px;font-weight:700;color:var(--green)">0 €</div>
+    </div>
+  </div>
+
   <div class="card">
-    <div class="section-label">➕ Nouvelle expense</div>
+    <div class="section-label">➕ New expense</div>
     <div class="form-row full"><input type="text" id="expName" placeholder="e.g: Bespoke Hotel Shinjuku"></div>
     <div class="form-row">
       <div><div class="field-label">Amount</div><input type="number" inputmode="numeric" id="expAmount" placeholder="0"></div>
@@ -235,7 +252,7 @@ select option{background:#1a1a2e}
   </div>
 
   <div class="card">
-    <div class="section-label">🗓️ Toutes les expenses</div>
+    <div class="section-label">🗓️ All expenses</div>
     <div id="expenseList"></div>
     <div class="total-row">
       <div class="tr-label">Total spent</div>
@@ -247,9 +264,9 @@ select option{background:#1a1a2e}
 <!-- CONVERTER TAB -->
 <div class="section" id="tab-converter">
   <div class="card">
-    <div class="section-label">💱 Converter</div>
+    <div class="section-label">💱 Currency converter</div>
     <div class="form-row">
-      <div><div class="field-label">Currency</div>
+      <div><div class="field-label">From</div>
         <select id="convFrom" onchange="convert()">
           <option value="EUR">🇪🇺 EUR</option>
           <option value="ILS">🇮🇱 ILS</option>
@@ -267,7 +284,7 @@ select option{background:#1a1a2e}
     </div>
   </div>
   <div class="card">
-    <div class="section-label">📋 Exchange rates</div>
+    <div class="section-label">📋 Reference rates</div>
     <div class="result-grid">
       <div class="result-box"><div class="r-label">1 EUR =</div><div class="r-value" style="font-size:16px">3.97 ₪</div></div>
       <div class="result-box"><div class="r-label">1 EUR =</div><div class="r-value" style="font-size:16px">1.09 $</div></div>
@@ -277,227 +294,8 @@ select option{background:#1a1a2e}
   </div>
 </div>
 
-<script>
-const R = { EUR:1, ILS:0.252, USD:0.917, JPY:0.0061 };
-const RATES = { EUR:1, ILS:3.97, USD:1.09, JPY:163 };
-const SYM = { EUR:'€', ILS:'₪', USD:'$', JPY:'¥' };
-
-let budget = { EUR:4501, ILS:18113, USD:0, JPY:0 };
-let transactions = [];
-let expenses = [];
-
-const DEFAULT_EXPENSES = [
-  { name:"Asakusa Tobu Hello Kitty", amount:1435, currency:"ILS", category:"🏨", date:"2026-08-17" },
-  { name:"Ghibli Park — billet 1", amount:51, currency:"EUR", category:"🎫", date:"2026-08-10" },
-  { name:"Ghibli Park — billet 2", amount:51, currency:"EUR", category:"🎫", date:"2026-08-10" },
-  { name:"Studios Harry Potter Tokyo", amount:66, currency:"EUR", category:"🎫", date:"2026-08-23" },
-  { name:"DisneySea", amount:113, currency:"EUR", category:"🎢", date:"2026-08-04" },
-  { name:"Ryokan Asakusa Shigetsu", amount:530, currency:"ILS", category:"🏨", date:"2026-08-16" },
-  { name:"Vessel Inn Namba", amount:68310, currency:"JPY", category:"🏨", date:"2026-08-12" },
-  { name:"Lakeland Hotel Fuji", amount:61680, currency:"JPY", category:"🏨", date:"2026-08-07" },
-  { name:"Bespoke Hotel Shinjuku", amount:689, currency:"EUR", category:"🏨", date:"2026-08-02" },
-  { name:"Universal Studios Japan (1 adult + 1 child)", amount:124.04, currency:"USD", category:"🎢", date:"2026-08-14" },
-];
-
-function load() {
-  try {
-    const b = localStorage.getItem('jp26_budget');
-    const e = localStorage.getItem('jp26_expenses');
-    const t = localStorage.getItem('jp26_transactions');
-    const inited = localStorage.getItem('jp26_inited');
-    if (b) budget = JSON.parse(b);
-    if (e) expenses = JSON.parse(e);
-    if (t) transactions = JSON.parse(t);
-    if (!inited) {
-      expenses = [...DEFAULT_EXPENSES];
-      localStorage.setItem('jp26_inited', '1');
-      save();
-    }
-  } catch(e) { expenses = [...DEFAULT_EXPENSES]; }
-}
-
-function save() {
-  try {
-    localStorage.setItem('jp26_budget', JSON.stringify(budget));
-    localStorage.setItem('jp26_expenses', JSON.stringify(expenses));
-    localStorage.setItem('jp26_transactions', JSON.stringify(transactions));
-  } catch(e) {}
-}
-
-function toEur(amount, currency) { return amount * (R[currency] || 1); }
-function fmt(n, dec=0) { return isNaN(n) ? '—' : n.toLocaleString('fr-FR', {maximumFractionDigits:dec}); }
-function totalBudget() { return Object.entries(budget).reduce((s,[k,v]) => s + toEur(v,k), 0); }
-function totalSpent() { return expenses.reduce((s,e) => s + toEur(e.amount, e.currency), 0); }
-
-function render() {
-  const total = totalBudget();
-  const spent = totalSpent();
-  const left = total - spent;
-  const pct = total > 0 ? Math.min(100, (spent/total)*100) : 0;
-
-  document.getElementById('heroTotal').textContent = fmt(total) + ' €';
-  document.getElementById('statSpent').textContent = fmt(spent) + ' €';
-  document.getElementById('statCount').textContent = expenses.length + ' expense' + (expenses.length > 1 ? 's' : '');
-  document.getElementById('statLeft').textContent = fmt(left) + ' €';
-  document.getElementById('statLeft').style.color = left < 0 ? 'var(--red)' : 'var(--green)';
-  document.getElementById('statPerDay').textContent = left > 0 ? fmt(left/24) + ' €/day' : '—';
-  document.getElementById('progPct').textContent = fmt(pct,1) + '%';
-  document.getElementById('progFill').style.width = pct + '%';
-  document.getElementById('progMax').textContent = fmt(total) + ' €';
-  document.getElementById('dispEur').textContent = fmt(budget.EUR);
-  document.getElementById('dispIls').textContent = fmt(budget.ILS);
-  document.getElementById('dispUsd').textContent = fmt(budget.USD);
-  document.getElementById('dispJpy').textContent = fmt(budget.JPY);
-  document.getElementById('listTotal').textContent = fmt(spent) + ' €';
-
-  renderExpenses();
-  renderTransactions();
-}
-
-function renderTransactions() {
-  const list = document.getElementById('transactionList');
-  if (!transactions || transactions.length === 0) {
-    list.innerHTML = '<div class="empty-state"><div class="es-icon">📋</div><p>No transactions yet</p></div>';
-    return;
-  }
-  list.innerHTML = transactions.map((t,i) => `
-    <div class="tx-item">
-      <div style="flex:1">
-        <div class="tx-name">${t.sign > 0 ? '➕' : '➖'} ${t.label}</div>
-        <div class="tx-date">${t.date}</div>
-      </div>
-      <div class="${t.sign > 0 ? 'tx-pos' : 'tx-neg'}" style="margin-right:8px">${t.sign > 0 ? '+' : '-'}${SYM[t.currency]}${fmt(t.amount)}</div>
-      <button class="del-btn" onclick="openEditTx(${i})" style="background:rgba(76,201,240,0.1);color:var(--blue);margin-right:4px;font-size:14px">✏️</button>
-      <button class="del-btn" onclick="deleteTx(${i})" style="font-size:14px">🗑️</button>
-    </div>
-  `).join('');
-}
-
-function renderExpenses() {
-  const list = document.getElementById('expenseList');
-  if (expenses.length === 0) {
-    list.innerHTML = '<div class="empty-state"><div class="es-icon">🗂️</div><p>Aucune expense</p></div>';
-    return;
-  }
-  list.innerHTML = expenses.map((e,i) => `
-    <div class="exp-item">
-      <div class="exp-left">
-        <div class="exp-emoji">${e.category}</div>
-        <div>
-          <div class="exp-name">${e.name}</div>
-          <div class="exp-meta">
-            ${e.date ? `<span class="exp-date">${e.date}</span>` : ''}
-            <span class="exp-eur">≈ ${fmt(toEur(e.amount, e.currency))} €</span>
-          </div>
-        </div>
-      </div>
-      <div class="exp-right">
-        <div class="exp-amount">${SYM[e.currency]}${fmt(e.amount)}</div>
-        <button class="del-btn" onclick="openEdit(${i})" style="background:rgba(76,201,240,0.1);color:var(--blue);margin-right:4px">✏️</button>
-        <button class="del-btn" onclick="deleteExp(${i})">✕</button>
-      </div>
-    </div>
-  `).join('');
-}
-
-function adjustBudget(sign) {
-  const currency = document.getElementById('budgetCurrency').value;
-  const amount = parseFloat(document.getElementById('budgetAmount').value);
-  const label = document.getElementById('budgetLabel').value.trim() || (sign > 0 ? 'Budget added' : 'Budget removed');
-  if (isNaN(amount) || amount <= 0) { alert('Please enter a valid amount!'); return; }
-  budget[currency] = Math.max(0, (budget[currency] || 0) + sign * amount);
-  transactions.unshift({
-    label, amount, currency, sign,
-    date: new Date().toLocaleString('fr-FR', {day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})
-  });
-  if (transactions.length > 30) transactions.pop();
-  document.getElementById('budgetAmount').value = '';
-  document.getElementById('budgetLabel').value = '';
-  save();
-  render();
-}
-
-function addExpense() {
-  const name = document.getElementById('expName').value.trim();
-  const amount = parseFloat(document.getElementById('expAmount').value);
-  const currency = document.getElementById('expCurrency').value;
-  const category = document.getElementById('expCategory').value;
-  const date = document.getElementById('expDate').value;
-  if (!name || isNaN(amount) || amount <= 0) { alert('Please fill in name and amount!'); return; }
-  expenses.unshift({ name, amount, currency, category, date });
-  save();
-  render();
-  document.getElementById('expName').value = '';
-  document.getElementById('expAmount').value = '';
-  document.getElementById('expDate').value = '';
-}
-
-function openEdit(i) {
-  const e = expenses[i];
-  document.getElementById('editIndex').value = i;
-  document.getElementById('editName').value = e.name;
-  document.getElementById('editAmount').value = e.amount;
-  document.getElementById('editCurrency').value = e.currency;
-  document.getElementById('editCategory').value = e.category;
-  document.getElementById('editDate').value = e.date || '';
-  document.getElementById('editModal').classList.add('open');
-}
-
-function saveEdit() {
-  const i = parseInt(document.getElementById('editIndex').value);
-  const name = document.getElementById('editName').value.trim();
-  const amount = parseFloat(document.getElementById('editAmount').value);
-  if (!name || isNaN(amount) || amount <= 0) { alert('Please fill in name and amount!'); return; }
-  expenses[i] = {
-    name,
-    amount,
-    currency: document.getElementById('editCurrency').value,
-    category: document.getElementById('editCategory').value,
-    date: document.getElementById('editDate').value
-  };
-  document.getElementById('editModal').classList.remove('open');
-  save(); render();
-}
-
-function closeModal(e) {
-  if (e.target === document.getElementById('editModal')) {
-    document.getElementById('editModal').classList.remove('open');
-  }
-}
-
-function deleteExp(i) {
-  if (confirm('Supprimer cette expense ?')) { expenses.splice(i,1); save(); render(); }
-}
-
-
-
-
-
-
-
-function convert() {
-  const from = document.getElementById('convFrom').value;
-  const amount = parseFloat(document.getElementById('convAmount').value);
-  if (isNaN(amount)) { ['EUR','ILS','USD','JPY'].forEach(c => document.getElementById('res-'+c).textContent = '—'); return; }
-  const inEur = amount / RATES[from];
-  ['EUR','ILS','USD','JPY'].forEach(c => {
-    document.getElementById('res-'+c).textContent = fmt(inEur * RATES[c], c==='JPY' ? 0 : 2);
-  });
-}
-
-function showTab(id, el) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('tab-'+id).classList.add('active');
-  el.classList.add('active');
-  window.scrollTo(0,0);
-}
-
-load();
-render();
-</script>
-<!-- EDIT MODAL -->
-<div class="modal-overlay" id="editModal" onclick="closeModal(event)">
+<!-- EDIT EXPENSE MODAL -->
+<div class="modal-overlay" id="editModal" onclick="if(event.target===this)this.classList.remove('open')">
   <div class="modal">
     <div class="modal-title">✏️ Edit expense <button class="modal-close" onclick="document.getElementById('editModal').classList.remove('open')">✕</button></div>
     <input type="hidden" id="editIndex">
@@ -528,8 +326,280 @@ render();
       <div><div class="field-label">Date</div><input type="date" id="editDate"></div>
     </div>
     <button class="btn-primary" onclick="saveEdit()" style="margin-bottom:10px">💾 Save changes</button>
+    <button style="background:none;border:none;color:var(--red);font-size:14px;font-weight:600;width:100%;cursor:pointer;padding:10px" onclick="deleteFromEdit()">🗑️ Delete expense</button>
   </div>
 </div>
 
+<!-- EDIT TRANSACTION MODAL -->
+<div class="modal-overlay" id="editTxModal" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal">
+    <div class="modal-title">✏️ Edit transaction <button class="modal-close" onclick="document.getElementById('editTxModal').classList.remove('open')">✕</button></div>
+    <input type="hidden" id="editTxIndex">
+    <div class="form-row full" style="margin-bottom:10px"><div class="field-label">Description</div><input type="text" id="editTxLabel" placeholder="Description"></div>
+    <div class="form-row" style="margin-bottom:16px">
+      <div><div class="field-label">Amount</div><input type="number" inputmode="numeric" id="editTxAmount" placeholder="0"></div>
+      <div><div class="field-label">Currency</div>
+        <select id="editTxCurrency">
+          <option value="EUR">🇪🇺 EUR €</option>
+          <option value="ILS">🇮🇱 ILS ₪</option>
+          <option value="USD">🇺🇸 USD $</option>
+          <option value="JPY">🇯🇵 JPY ¥</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn-primary" onclick="saveEditTx()" style="margin-bottom:10px">💾 Save changes</button>
+    <button style="background:none;border:none;color:var(--red);font-size:14px;font-weight:600;width:100%;cursor:pointer;padding:10px" onclick="deleteFromEditTx()">🗑️ Delete transaction</button>
+  </div>
+</div>
+
+<script>
+const R = { EUR:1, ILS:0.252, USD:0.917, JPY:0.0061 };
+const RATES = { EUR:1, ILS:3.97, USD:1.09, JPY:163 };
+const SYM = { EUR:'€', ILS:'₪', USD:'$', JPY:'¥' };
+
+let budget = { EUR:0, ILS:0, USD:0, JPY:0 };
+let transactions = [];
+let expenses = [];
+
+const DEFAULT_EXPENSES = [
+  { name:"Asakusa Tobu Hello Kitty", amount:1435, currency:"ILS", category:"🏨", date:"2026-08-17" },
+  { name:"Ghibli Park — ticket 1", amount:51, currency:"EUR", category:"🎫", date:"2026-08-10" },
+  { name:"Ghibli Park — ticket 2", amount:51, currency:"EUR", category:"🎫", date:"2026-08-10" },
+  { name:"Harry Potter Studios Tokyo", amount:66, currency:"EUR", category:"🎫", date:"2026-08-23" },
+  { name:"DisneySea", amount:113, currency:"EUR", category:"🎢", date:"2026-08-04" },
+  { name:"Ryokan Asakusa Shigetsu", amount:530, currency:"ILS", category:"🏨", date:"2026-08-16" },
+  { name:"Vessel Inn Namba", amount:68310, currency:"JPY", category:"🏨", date:"2026-08-12" },
+  { name:"Lakeland Hotel Fuji", amount:61680, currency:"JPY", category:"🏨", date:"2026-08-07" },
+  { name:"Bespoke Hotel Shinjuku", amount:689, currency:"EUR", category:"🏨", date:"2026-08-02" },
+  { name:"Universal Studios Japan (1 adult + 1 child)", amount:124.04, currency:"USD", category:"🎢", date:"2026-08-14" },
+];
+
+function load() {
+  try {
+    const version = localStorage.getItem('jp26_version');
+    if (version !== 'v3') {
+      localStorage.removeItem('jp26_budget');
+      localStorage.removeItem('jp26_inited');
+      localStorage.setItem('jp26_version', 'v3');
+    }
+    const b = localStorage.getItem('jp26_budget');
+    const e = localStorage.getItem('jp26_expenses');
+    const t = localStorage.getItem('jp26_transactions');
+    const inited = localStorage.getItem('jp26_inited');
+    if (b) budget = JSON.parse(b);
+    if (e) expenses = JSON.parse(e);
+    if (t) transactions = JSON.parse(t);
+    if (!inited) {
+      expenses = [...DEFAULT_EXPENSES];
+      localStorage.setItem('jp26_inited', '1');
+      save();
+    }
+  } catch(e) { expenses = [...DEFAULT_EXPENSES]; }
+}
+
+function save() {
+  try {
+    localStorage.setItem('jp26_budget', JSON.stringify(budget));
+    localStorage.setItem('jp26_expenses', JSON.stringify(expenses));
+    localStorage.setItem('jp26_transactions', JSON.stringify(transactions));
+  } catch(e) {}
+}
+
+function toEur(amount, currency) { return amount * (R[currency] || 1); }
+function fmt(n, dec=0) { return isNaN(n) ? '0' : n.toLocaleString('en-US', {maximumFractionDigits:dec}); }
+function totalBudget() { return Object.entries(budget).reduce((s,[k,v]) => s + toEur(v,k), 0); }
+function totalSpent() { return expenses.reduce((s,e) => s + toEur(e.amount, e.currency), 0); }
+
+function render() {
+  const total = totalBudget();
+  const spent = totalSpent();
+  const left = total - spent;
+  const pct = total > 0 ? Math.min(100, (spent/total)*100) : 0;
+
+  document.getElementById('heroTotal').textContent = fmt(total) + ' €';
+  document.getElementById('statSpent').textContent = fmt(spent) + ' €';
+  document.getElementById('statCount').textContent = expenses.length + ' expense' + (expenses.length !== 1 ? 's' : '');
+  document.getElementById('statLeft').textContent = fmt(left) + ' €';
+  document.getElementById('statLeft').style.color = left < 0 ? 'var(--red)' : 'var(--green)';
+  document.getElementById('statPerDay').textContent = left > 0 ? fmt(left/24) + ' €/day' : '—';
+  document.getElementById('progPct').textContent = fmt(pct,1) + '%';
+  document.getElementById('progFill').style.width = pct + '%';
+  document.getElementById('progMax').textContent = fmt(total) + ' €';
+  document.getElementById('dispEur').textContent = fmt(budget.EUR);
+  document.getElementById('dispIls').textContent = fmt(budget.ILS);
+  document.getElementById('dispUsd').textContent = fmt(budget.USD);
+  document.getElementById('dispJpy').textContent = fmt(budget.JPY);
+  document.getElementById('listTotal').textContent = fmt(spent) + ' €';
+  if (document.getElementById('expTabSpent')) {
+    document.getElementById('expTabSpent').textContent = fmt(spent) + ' €';
+    document.getElementById('expTabLeft').textContent = fmt(total - spent) + ' €';
+    document.getElementById('expTabLeft').style.color = (total - spent) < 0 ? 'var(--red)' : 'var(--green)';
+  }
+
+  renderExpenses();
+  renderTransactions();
+}
+
+function renderTransactions() {
+  const list = document.getElementById('transactionList');
+  if (!transactions || transactions.length === 0) {
+    list.innerHTML = '<div class="empty-state"><div class="es-icon">📋</div><p>No transactions yet</p></div>';
+    return;
+  }
+  list.innerHTML = transactions.map((t,i) => `
+    <div class="tx-item">
+      <div style="flex:1">
+        <div class="tx-name">${t.sign > 0 ? '➕' : '➖'} ${t.label}</div>
+        <div class="tx-date">${t.date}</div>
+      </div>
+      <div class="${t.sign > 0 ? 'tx-pos' : 'tx-neg'}" style="margin-right:4px">${t.sign > 0 ? '+' : '-'}${SYM[t.currency]}${fmt(t.amount)}</div>
+      <button class="icon-btn icon-btn-blue" onclick="openEditTx(${i})">✏️</button>
+      <button class="icon-btn icon-btn-red" onclick="deleteTx(${i})">🗑️</button>
+    </div>
+  `).join('');
+}
+
+function renderExpenses() {
+  const list = document.getElementById('expenseList');
+  if (expenses.length === 0) {
+    list.innerHTML = '<div class="empty-state"><div class="es-icon">🗂️</div><p>No expenses yet</p></div>';
+    return;
+  }
+  list.innerHTML = expenses.map((e,i) => `
+    <div class="exp-item">
+      <div class="exp-emoji">${e.category}</div>
+      <div style="flex:1;margin:0 8px">
+        <div class="exp-name">${e.name}</div>
+        <div class="exp-meta">
+          ${e.date ? `<span class="exp-date">${e.date}</span>` : ''}
+          <span class="exp-eur">≈ ${fmt(toEur(e.amount, e.currency))} €</span>
+        </div>
+      </div>
+      <div class="exp-amount" style="margin-right:4px">${SYM[e.currency]}${fmt(e.amount)}</div>
+      <button class="icon-btn icon-btn-blue" onclick="openEdit(${i})">✏️</button>
+      <button class="icon-btn icon-btn-red" onclick="deleteExp(${i})">🗑️</button>
+    </div>
+  `).join('');
+}
+
+function adjustBudget(sign) {
+  const currency = document.getElementById('budgetCurrency').value;
+  const amount = parseFloat(document.getElementById('budgetAmount').value);
+  const label = document.getElementById('budgetLabel').value.trim() || (sign > 0 ? 'Budget added' : 'Budget removed');
+  if (isNaN(amount) || amount <= 0) { alert('Please enter a valid amount!'); return; }
+  budget[currency] = Math.max(0, (budget[currency] || 0) + sign * amount);
+  transactions.unshift({
+    label, amount, currency, sign,
+    date: new Date().toLocaleString('en-GB', {day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})
+  });
+  if (transactions.length > 30) transactions.pop();
+  document.getElementById('budgetAmount').value = '';
+  document.getElementById('budgetLabel').value = '';
+  save(); render();
+}
+
+function addExpense() {
+  const name = document.getElementById('expName').value.trim();
+  const amount = parseFloat(document.getElementById('expAmount').value);
+  const currency = document.getElementById('expCurrency').value;
+  const category = document.getElementById('expCategory').value;
+  const date = document.getElementById('expDate').value;
+  if (!name || isNaN(amount) || amount <= 0) { alert('Please fill in name and amount!'); return; }
+  expenses.unshift({ name, amount, currency, category, date });
+  save(); render();
+  document.getElementById('expName').value = '';
+  document.getElementById('expAmount').value = '';
+  document.getElementById('expDate').value = '';
+}
+
+function openEdit(i) {
+  const e = expenses[i];
+  document.getElementById('editIndex').value = i;
+  document.getElementById('editName').value = e.name;
+  document.getElementById('editAmount').value = e.amount;
+  document.getElementById('editCurrency').value = e.currency;
+  document.getElementById('editCategory').value = e.category;
+  document.getElementById('editDate').value = e.date || '';
+  document.getElementById('editModal').classList.add('open');
+}
+
+function saveEdit() {
+  const i = parseInt(document.getElementById('editIndex').value);
+  const name = document.getElementById('editName').value.trim();
+  const amount = parseFloat(document.getElementById('editAmount').value);
+  if (!name || isNaN(amount) || amount <= 0) { alert('Please fill in all fields!'); return; }
+  expenses[i] = { name, amount, currency: document.getElementById('editCurrency').value, category: document.getElementById('editCategory').value, date: document.getElementById('editDate').value };
+  document.getElementById('editModal').classList.remove('open');
+  save(); render();
+}
+
+function deleteExp(i) {
+  if (confirm('Delete this expense?')) { expenses.splice(i,1); save(); render(); }
+}
+
+function deleteFromEdit() {
+  const i = parseInt(document.getElementById('editIndex').value);
+  expenses.splice(i,1);
+  document.getElementById('editModal').classList.remove('open');
+  save(); render();
+}
+
+function openEditTx(i) {
+  const t = transactions[i];
+  document.getElementById('editTxIndex').value = i;
+  document.getElementById('editTxLabel').value = t.label;
+  document.getElementById('editTxAmount').value = t.amount;
+  document.getElementById('editTxCurrency').value = t.currency;
+  document.getElementById('editTxModal').classList.add('open');
+}
+
+function saveEditTx() {
+  const i = parseInt(document.getElementById('editTxIndex').value);
+  const label = document.getElementById('editTxLabel').value.trim();
+  const amount = parseFloat(document.getElementById('editTxAmount').value);
+  const currency = document.getElementById('editTxCurrency').value;
+  if (!label || isNaN(amount) || amount <= 0) { alert('Please fill in all fields!'); return; }
+  const old = transactions[i];
+  budget[old.currency] = Math.max(0, (budget[old.currency] || 0) - old.sign * old.amount);
+  budget[currency] = Math.max(0, (budget[currency] || 0) + old.sign * amount);
+  transactions[i] = { ...old, label, amount, currency };
+  document.getElementById('editTxModal').classList.remove('open');
+  save(); render();
+}
+
+function deleteTx(i) {
+  const t = transactions[i];
+  budget[t.currency] = Math.max(0, (budget[t.currency] || 0) - t.sign * t.amount);
+  transactions.splice(i,1);
+  save(); render();
+}
+
+function deleteFromEditTx() {
+  const i = parseInt(document.getElementById('editTxIndex').value);
+  deleteTx(i);
+  document.getElementById('editTxModal').classList.remove('open');
+}
+
+function convert() {
+  const from = document.getElementById('convFrom').value;
+  const amount = parseFloat(document.getElementById('convAmount').value);
+  if (isNaN(amount)) { ['EUR','ILS','USD','JPY'].forEach(c => document.getElementById('res-'+c).textContent = '—'); return; }
+  const inEur = amount / RATES[from];
+  ['EUR','ILS','USD','JPY'].forEach(c => {
+    document.getElementById('res-'+c).textContent = fmt(inEur * RATES[c], c==='JPY' ? 0 : 2);
+  });
+}
+
+function showTab(id, el) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  el.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+load();
+render();
+</script>
 </body>
 </html>
