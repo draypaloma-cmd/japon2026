@@ -173,6 +173,16 @@ select option{background:#1a1a2e}
   </div>
 
   <div class="card">
+    <div class="section-label">🌍 Total budget in all currencies</div>
+    <div class="amounts-grid">
+      <div class="amount-box"><div class="ab-flag">🇪🇺</div><div class="ab-val" id="totalInEur">—</div><div class="ab-unit">EUR</div></div>
+      <div class="amount-box"><div class="ab-flag">🇮🇱</div><div class="ab-val" id="totalInIls">—</div><div class="ab-unit">ILS</div></div>
+      <div class="amount-box"><div class="ab-flag">🇺🇸</div><div class="ab-val" id="totalInUsd">—</div><div class="ab-unit">USD</div></div>
+      <div class="amount-box"><div class="ab-flag">🇯🇵</div><div class="ab-val" id="totalInJpy">—</div><div class="ab-unit">JPY</div></div>
+    </div>
+  </div>
+
+  <div class="card">
     <div class="section-label">✏️ Edit my budget</div>
     <div class="form-row full" style="margin-bottom:10px">
       <input type="text" id="budgetLabel" placeholder="e.g: Transfer from Leumi Israel">
@@ -372,15 +382,18 @@ const DEFAULT_EXPENSES = [
   { name:"Lakeland Hotel Fuji", amount:61680, currency:"JPY", category:"🏨", date:"2026-08-07" },
   { name:"Bespoke Hotel Shinjuku", amount:689, currency:"EUR", category:"🏨", date:"2026-08-02" },
   { name:"Universal Studios Japan (1 adult + 1 child)", amount:124.04, currency:"USD", category:"🎢", date:"2026-08-14" },
+  { name:"Mitsui Garden Hotel Kyoto Shijo", amount:51621, currency:"JPY", category:"🏨", date:"2026-08-08" },
+  { name:"teamLab Planets Tokyo (1 adult + 1 child)", amount:39.05, currency:"USD", category:"🎢", date:"2026-08-06" },
+  { name:"Kaiseki Dinner — Tempura & Chiya Beef (private room)", amount:27500, currency:"JPY", category:"🍜", date:"2026-08-10" },
 ];
 
 function load() {
   try {
     const version = localStorage.getItem('jp26_version');
-    if (version !== 'v3') {
+    if (version !== 'v5') {
       localStorage.removeItem('jp26_budget');
       localStorage.removeItem('jp26_inited');
-      localStorage.setItem('jp26_version', 'v3');
+      localStorage.setItem('jp26_version', 'v5');
     }
     const b = localStorage.getItem('jp26_budget');
     const e = localStorage.getItem('jp26_expenses');
@@ -430,6 +443,12 @@ function render() {
   document.getElementById('dispUsd').textContent = fmt(budget.USD);
   document.getElementById('dispJpy').textContent = fmt(budget.JPY);
   document.getElementById('listTotal').textContent = fmt(spent) + ' €';
+  // Total in all currencies
+  const totalEur = totalBudget();
+  document.getElementById('totalInEur').textContent = fmt(totalEur);
+  document.getElementById('totalInIls').textContent = fmt(totalEur * RATES.ILS);
+  document.getElementById('totalInUsd').textContent = fmt(totalEur * RATES.USD);
+  document.getElementById('totalInJpy').textContent = fmt(totalEur * RATES.JPY);
   if (document.getElementById('expTabSpent')) {
     document.getElementById('expTabSpent').textContent = fmt(spent) + ' €';
     document.getElementById('expTabLeft').textContent = fmt(total - spent) + ' €';
