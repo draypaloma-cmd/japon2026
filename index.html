@@ -375,13 +375,15 @@ const DEFAULT_EXPENSES = [
   { name:"Asakusa Tobu Hello Kitty", amount:1435, currency:"ILS", category:"🏨", date:"2026-08-17" },
   { name:"Ghibli Park — ticket 1", amount:51, currency:"EUR", category:"🎫", date:"2026-08-10" },
   { name:"Ghibli Park — ticket 2", amount:51, currency:"EUR", category:"🎫", date:"2026-08-10" },
-  { name:"Harry Potter Studios Tokyo", amount:66, currency:"EUR", category:"🎫", date:"2026-08-23" },
-  { name:"DisneySea", amount:113, currency:"EUR", category:"🎢", date:"2026-08-04" },
-  { name:"Ryokan Asakusa Shigetsu", amount:530, currency:"ILS", category:"🏨", date:"2026-08-16" },
-  { name:"Vessel Inn Namba", amount:68310, currency:"JPY", category:"🏨", date:"2026-08-12" },
-  { name:"Lakeland Hotel Fuji", amount:61680, currency:"JPY", category:"🏨", date:"2026-08-07" },
-  { name:"Bespoke Hotel Shinjuku", amount:689, currency:"EUR", category:"🏨", date:"2026-08-02" },
+  { name:"Harry Potter Studios Tokyo", amount:74.44, currency:"USD", category:"🎫", date:"2026-08-23" },
+  { name:"DisneySea", amount:101.54, currency:"USD", category:"🎢", date:"2026-08-06" },
+  { name:"Bus Ueno/Asakusa → DisneySea", amount:25.50, currency:"USD", category:"✈️", date:"2026-08-06" },
+  { name:"Ryokan Asakusa Shigetsu", amount:162, currency:"EUR", category:"🏨", date:"2026-08-16" },
+  { name:"Vessel Inn Namba", amount:367, currency:"EUR", category:"🏨", date:"2026-08-12" },
+  { name:"Lakeland Hotel Fuji", amount:331, currency:"EUR", category:"🏨", date:"2026-08-07" },
   { name:"Universal Studios Japan (1 adult + 1 child)", amount:124.04, currency:"USD", category:"🎢", date:"2026-08-14" },
+  { name:"Tokyu Stay Shibuya Ebisu", amount:139707, currency:"JPY", category:"🏨", date:"2026-08-02" },
+  { name:"Kibune Fujiya Ryokan (Kaiseki incl.)", amount:89600, currency:"JPY", category:"🏨", date:"2026-08-11" },
   { name:"Mitsui Garden Hotel Kyoto Shijo", amount:51621, currency:"JPY", category:"🏨", date:"2026-08-08" },
   { name:"teamLab Planets Tokyo (1 adult + 1 child)", amount:39.05, currency:"USD", category:"🎢", date:"2026-08-06" },
   { name:"Kaiseki Dinner — Tempura & Chiya Beef (private room)", amount:27500, currency:"JPY", category:"🍜", date:"2026-08-10" },
@@ -390,10 +392,10 @@ const DEFAULT_EXPENSES = [
 function load() {
   try {
     const version = localStorage.getItem('jp26_version');
-    if (version !== 'v5') {
+    if (version !== 'v6') {
       localStorage.removeItem('jp26_budget');
       localStorage.removeItem('jp26_inited');
-      localStorage.setItem('jp26_version', 'v5');
+      localStorage.setItem('jp26_version', 'v6');
     }
     const b = localStorage.getItem('jp26_budget');
     const e = localStorage.getItem('jp26_expenses');
